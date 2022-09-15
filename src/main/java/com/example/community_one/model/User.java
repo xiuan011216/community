@@ -3,11 +3,11 @@ package com.example.community_one.model;
 public class User {
     private Integer id;
     private String accountId;
-    private String name;
+    private String name;//姓名
     private String token;
-    private Long gmtCreate;
-    private Long gmtModified;
-    private String portraitUrl;
+    private Long gmtCreate;//发布时间
+    private Long gmtModified;//修改时间
+    private String portraitUrl;//头像地址
 
     public String getPortraitUrl() {
         return portraitUrl;
