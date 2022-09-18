@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-
+//发布问题页面
 @Controller
 public class PublishController {
 

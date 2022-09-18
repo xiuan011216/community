@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-
+//首页
 @Controller
 public class IndexController {
 
@@ -31,7 +31,7 @@ public String index(HttpServletRequest request,
 //                    页码
                     @RequestParam(name = "page",defaultValue = "1") Integer page,
                     //每页的数量
-                    @RequestParam(name = "size",defaultValue = "2") Integer size){
+                    @RequestParam(name = "size",defaultValue = "5") Integer size){
     Cookie[] cookies = request.getCookies();
 //    判断cookies不为空
 if (cookies != null && cookies.length != 0)

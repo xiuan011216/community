@@ -13,22 +13,10 @@ public class PaginationDto {
     private Integer page;//当前页
     private   Integer totalPage;//总页
     private List<Integer> pages=new ArrayList<>();//页面数组
+    private Integer totalCount;
 
-    public void setPagination(Integer totalCount, Integer page, Integer size) {
-
-        //判断要显示的是否可以整除
-        if (totalCount%size==0){
-            totalPage=totalCount/size;
-        }else {
-            totalPage=totalCount/size+1;
-        }
-        //进行错误操作判断
-        if (page<1){
-            page=1;
-        }
-        if (page>totalPage){
-            page=totalPage;
-        }
+    public void setPagination(Integer totalPage, Integer page) {
+        this.totalPage=totalPage;
         this.page=page;
 
         //判断当前页是那一页
@@ -133,4 +121,13 @@ public class PaginationDto {
     public void setTotalPage(Integer totalPage) {
         this.totalPage = totalPage;
     }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
+
 }
