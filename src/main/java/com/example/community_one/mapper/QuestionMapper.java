@@ -1,5 +1,6 @@
 package com.example.community_one.mapper;
 
+import com.example.community_one.dto.QuestionDto;
 import com.example.community_one.model.Question;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,4 +29,8 @@ public interface QuestionMapper {
     //我的问题页计算总数
     @Select("select count(1) from question where creator=#{userId}")
     Integer countByUserId(Integer userId);
+
+    //问题详情页根据id进行查找
+    @Select("select * from question where id=#{id}")
+    Question getById(Integer id);
 }

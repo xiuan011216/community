@@ -4,8 +4,8 @@ import com.example.community_one.model.User;
 
 public class QuestionDto {
     private Integer id;
-    private String title;
-    private String description;
+    private String title;//标题
+    private String description;//描述
     private String tag;
     private Long gmtCreate;
     private Long gmtModified;
