@@ -20,7 +20,7 @@
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h2><span th:text="${sectionName}"></span> </h2>
             <hr>
-            <div class="media" th:each="question : ${pagination.questions}">
+            <div class="media" th:each="question : ${pagination.questionDtoList}">
                 <div class="media-left">
                     <a href="#">
                         <img class="media-object img-rounded" th:src="${question.user.portraitUrl}">
@@ -29,6 +29,7 @@
                 <div class="media-body">
                     <h4 class="media-heading" th:text="${question.title}"></h4>
                     <span class="text-desc"> <span th:text="${question.commentCoumt}"></span>回复 • <span th:text="${question.viewCoumt}"></span>次浏览 • <span th:text="${#dates.format(question.gmtCreate,'yy-MM-dd HH:mm')}"> 发布时间</span>
+                    </span>
                 </div>
             </div>
 

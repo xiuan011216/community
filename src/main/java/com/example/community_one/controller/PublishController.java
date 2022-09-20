@@ -1,6 +1,7 @@
 package com.example.community_one.controller;
 
 import com.example.community_one.mapper.QuestionMapper;
+import com.example.community_one.mapper.UserMapper;
 import com.example.community_one.model.Question;
 import com.example.community_one.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 //发布问题页面
 @Controller
@@ -17,6 +19,9 @@ public class PublishController {
 
     @Autowired
     private QuestionMapper questionMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
 
     @GetMapping("/publish")
@@ -34,36 +39,35 @@ public class PublishController {
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
 
-        User user = (User)request.getSession().getAttribute("user");
-        if (user == null){
-           model.addAttribute("error","用户未登录");
-            return "publish";
-        }
-        if (title==null||title==""){
+        if (title==null||title.equals("")){
             model.addAttribute("error","问题标题不可为空");
             return "publish";
         }
 
-        if (description==null||description==""){
+        if (description==null||description.equals("")){
             model.addAttribute("error","问题说明不可为空");
             return "publish";
         }
-        if (tag==null||tag==""){
+        if (tag==null||tag.equals("")){
             model.addAttribute("error","标签不可为空");
             return "publish";
         }
 
-
-        Question question = new Question();
-        question.setTitle(title);
-        question.setDescription(description);
-        question.setTag(tag);
-        question.setCreator(user.getId());
-        question.setGmtCreate(System.currentTimeMillis());
-        question.setGmtModified(question.getGmtCreate());
-        questionMapper.create(question);
-        return "redirect:/";
-
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null){
+            model.addAttribute("error","用户未登录");
+            return "publish";
+        }else {
+            Question question = new Question();
+            question.setTitle(title);
+            question.setDescription(description);
+            question.setTag(tag);
+            question.setCreator(Long.valueOf(user.getId()));
+            question.setGmtCreate(System.currentTimeMillis());
+            question.setGmtModified(question.getGmtCreate());
+            questionMapper.create(question);
+            return "redirect:/";
+        }
     }
 
 }

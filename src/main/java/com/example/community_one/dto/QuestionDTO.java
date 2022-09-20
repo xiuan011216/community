@@ -2,7 +2,7 @@ package com.example.community_one.dto;
 
 import com.example.community_one.model.User;
 
-public class QuestionDto {
+public class QuestionDTO {
     private Integer id;
     private String title;//标题
     private String description;//描述

@@ -5,7 +5,7 @@ import java.util.List;
 
 //分页
 public class PaginationDto {
-    private List<QuestionDto> questions;
+    private List<QuestionDTO> questionDtoList;
     private boolean showPrevious;//上一页
     private boolean showFirstPage;//首页
     private boolean showNext;//下一页
@@ -58,13 +58,12 @@ public class PaginationDto {
         }
     }
 
-
-    public List<QuestionDto> getQuestions() {
-        return questions;
+    public List<QuestionDTO> getQuestionDtoList() {
+        return questionDtoList;
     }
 
-    public void setQuestions(List<QuestionDto> questions) {
-        this.questions = questions;
+    public void setQuestionDtoList(List<QuestionDTO> questionDtoList) {
+        this.questionDtoList = questionDtoList;
     }
 
     public boolean isShowPrevious() {

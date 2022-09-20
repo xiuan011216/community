@@ -15,15 +15,15 @@ public class IndexController {
     private QuestionService questionService;
 
 
-@GetMapping("/")
-public String index(Model model,
+    @GetMapping("/")
+    public String index(Model model,
 //                    页码
-                    @RequestParam(name = "page",defaultValue = "1") Integer page,
-                    //每页的数量
-                    @RequestParam(name = "size",defaultValue = "5") Integer size){
+                        @RequestParam(name = "page",defaultValue = "1") Integer page,
+                        //每页的数量
+                        @RequestParam(name = "size",defaultValue = "5") Integer size){
 
-    PaginationDto pagination=questionService.list(page,size);
-    model.addAttribute("pagination",pagination);
-    return "index";
-}
+        PaginationDto pagination=questionService.list(page,size);
+        model.addAttribute("pagination",pagination);
+        return "index";
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.community_one.controller;
 
-import com.example.community_one.dto.QuestionDto;
-import com.example.community_one.mapper.QuestionMapper;
+import com.example.community_one.dto.QuestionDTO;
 import com.example.community_one.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +18,7 @@ public class QuestionController {
     @GetMapping("/question/{id}")
     private String question(@PathVariable(name = "id")Integer id,
                             Model model){
-        QuestionDto questionDto=questionService.getById(id);
+        QuestionDTO questionDto=questionService.getById(id);
         model.addAttribute("question",questionDto);
         return "question";
     }

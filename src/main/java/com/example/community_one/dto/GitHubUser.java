@@ -2,7 +2,7 @@ package com.example.community_one.dto;
 
 public class GitHubUser {
     private String name;
-    private long id;
+    private Integer id;
     private String bio;
     private String avatarUrl;
 
@@ -22,11 +22,11 @@ public class GitHubUser {
         this.name = name;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

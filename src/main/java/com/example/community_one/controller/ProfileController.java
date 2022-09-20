@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 //我的问题页面
@@ -30,6 +31,7 @@ public class ProfileController {
                           @RequestParam(name = "page",defaultValue = "1") Integer page,
                           //每页的数量
                           @RequestParam(name = "size",defaultValue = "5") Integer size){
+        Cookie[] cookies = request.getCookies();
         User user = (User)request.getSession().getAttribute("user");
         //判断是否登录未登录就跳转到首页
         if (user==null){
