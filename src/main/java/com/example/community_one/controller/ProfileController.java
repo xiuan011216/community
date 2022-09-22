@@ -24,7 +24,7 @@ public class ProfileController {
 
 
     @GetMapping("/profile/{action}")
-    public String profile(@PathVariable(name = "action") String action,
+    public String profile(@PathVariable(name = "action") String sction,
                           Model model,
                           HttpServletRequest request,
 //                    页码
@@ -37,10 +37,10 @@ public class ProfileController {
         if (user==null){
             return "redirect:/";
         }
-        if ("questions".equals(action)){
+        if ("questions".equals(sction)){
             model.addAttribute("section","questions");
             model.addAttribute("sectionName","我发布的问题");
-        }else if ("replies".equals(action)){
+        }else if ("replies".equals(sction)){
             model.addAttribute("section","replies");
             model.addAttribute("sectionName","最新回复");
         }

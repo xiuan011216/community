@@ -1,9 +1,7 @@
 package com.example.community_one.mapper;
 
 import com.example.community_one.model.Question;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -16,20 +14,23 @@ public interface QuestionMapper {
 
     //首页分页
     @Select("select * from question limit #{offset},#{size}")
-    List<Question> list(Integer offset, Integer size);
+    List<Question> list(@Param(value = "offset") Integer offset, @Param(value = "size") Integer size);
 
     //首页分页计算总数
     @Select("select count(1) from question")
     Integer count();
     //我的问题页分页
     @Select("select * from question where creator=#{userId} limit #{offset},#{size}")
-    List<Question> listByUserId(Integer userId, Integer offset, Integer size);
+    List<Question> listByUserId(@Param("userId") Integer userId,@Param(value = "offset") Integer offset,@Param(value = "size") Integer size);
 
     //我的问题页计算总数
     @Select("select count(1) from question where creator=#{userId}")
-    Integer countByUserId(Integer userId);
+    Integer countByUserId(@Param("userId") Integer userId);
 
     //问题详情页根据id进行查找
-    @Select("select * from question where id=#{id}")
-    Question getById(Integer id);
+    @Select("select * from question where id= #{id}")
+    Question getById(@Param("id") Integer id);
+    //编辑页面
+    @Update("update question set title=#{title},description=#{description},gmt_modified=#{gmtModified},tag=#{tag} where id=#{id}")
+    void update(Question question);
 }
